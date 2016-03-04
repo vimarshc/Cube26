@@ -1,11 +1,8 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
-from rest_framework.renderers import JSONRenderer
+from django.views.decorators.csrf import csrf_exempt
+from gitbub.models import Comment
+from django.http import HttpResponse
 
 from django.conf import settings
 
@@ -20,3 +17,20 @@ def render_landing_page(request, template="templates/web/landingpage.html"):
 	"""
 	#logger.debug("Landing page rendered!")
 	return render(request, template, context_instance=RequestContext(request))
+
+
+
+#AJAX call to save comments in DB
+@csrf_exempt
+def dbsave(request):
+	print("request.POST: %s" %request.POST)	
+	if(request.method == 'POST'):		
+		request_body = json.loads(request.body)
+		# request_b = json.loads(request.POST)
+		print(type(request.POST))
+		#print(request_body); print(type(request_body));
+		comment = Comment.objects.create(comment=request_body["body"], user=request_body["user"]["login"])
+		print(comment)
+		return HttpResponse("okay!")
+	else:
+		HttpResponse("Error")	

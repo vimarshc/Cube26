@@ -19,4 +19,5 @@ from gitbub import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.render_landing_page),
+    url(r'^dbsave/', views.dbsave),#localhost:8000/dbsave/ is where the AJAX call is made. 
 ]
