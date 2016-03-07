@@ -23,7 +23,7 @@ def render_landing_page(request, template="templates/web/landingpage.html"):
 #AJAX call to save comments in DB
 @csrf_exempt
 def dbsave(request):
-	print("request.POST: %s" %request.POST)	
+	# print("request.POST: %s" %request.POST)	
 	if(request.method == 'POST'):		
 		request_body = json.loads(request.body)
 		# request_b = json.loads(request.POST)
