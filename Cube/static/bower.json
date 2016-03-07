@@ -1,0 +1,13 @@
+{
+  "name": "Cube26 ASSIGNMENT",
+  "homepage": "https://github.com/vimarshc/Cube26",
+  "authors": [
+    "Chatuur <vimarsh.c@gmail.com>"
+  ],
+  "description": "Angular Dependencies for Assignment",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT"
+}
