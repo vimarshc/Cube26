@@ -117,7 +117,7 @@ the comment objects. Each comment object contains a user object which contains a
                     // console.log(twofour);
                     // console.log(week);
                     // console.log(greater);
-                    console.log($scope.issues);
+                    // console.log($scope.issues);
 
                     $scope.stats.Total = total;
                     $scope.stats.Day = twofour;
@@ -173,6 +173,10 @@ the comment objects. Each comment object contains a user object which contains a
             .error(function(data, status, headers, config){
                 console.log("Error in Saving");
             });
+
+            $scope.sentMessage.setUntouched();
+            $scope.sentMessage.setPristine();
+
         };
     })
 

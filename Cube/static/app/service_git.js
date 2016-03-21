@@ -1,28 +1,82 @@
+//Documentation Style: 
+
+    /**
+    * @name 
+    * @desc 
+    * @param {string} INFO
+    * @returns {Promise}
+    * @memberOf "Location"
+    */
 
 (function(){
+//Angular factory to perform HTTP GET requests
+	angular
+	.module('gitbub.service_git', [])
+	.factory('gitFactory', ['$http', '$q', gitFactory]);
 
-	angular.module('gitbub.service_git', [])
-	//Angular factory to perform HTTP GET requests
-	.factory('gitFactory', ['$http', '$q', function($http, $q){
+
+    /**
+    * @namespace: gitFactory
+    * @returns {Factory}
+    * @memberOf gitbub.service_git
+    */
+
+	function gitFactory($http, $q){
 
 		var gitFactory = {
 			data: {},
-			gitAPI: function(url){
-				// console.info('gitFactory', url);
-				var deferred = $q.defer();
-				
-				$http({method: "get", url: url})
-				.then(function(response) {
-			          // console.info(response.data);
-			          deferred.resolve([response.status, response.data]);
-			        }, function(response) {
-			          // console.info(response.status);
-			          deferred.resolve([response.status, response.data]);
-			      });
-				return deferred.promise;
-			}
+			gitAPI: gitAPI
 		};
 		return gitFactory;
-	}]);
+
+
+
+		/**
+    	* @name: gitAPI
+    	* @desc: Performing http get request to get issues information for URL that is transformed from github project URL to 
+    			 URL at which API is hit. 	
+    	* @param {string} Transformed URL. Project URL -> API URL
+    	* @returns {Promise}
+    	* @memberOf gitbub.service_git.gitFactory
+    	*/
+		function gitAPI(url){
+				// console.info('gitFactory', url);
+			
+
+			var request = $http({
+				method: "get", 
+				url: url,
+				params: {
+					action:"get"
+				},
+			});
+
+			return (request.then(handleSuccess, handleError));
+		}
+
+
+		//PRIVATE METHODS
+
+		/**
+    	* @name: handleSuccess, handleError
+    	* @desc: fucntions to handle promises from $http 	
+    	* @param {Object} Response object from $http request
+    	* @returns {Array} [Status and Data]
+    	* @memberOf gitbub.service_git.gitFactory
+    	*/
+
+
+		function handleSuccess(response){
+			console.log(response);
+			return [response.status, response.data];
+		}
+
+		function handleError (response) {
+			return [response.status, response.data];
+		}
+	}
 
 })();
+
+
+
