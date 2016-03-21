@@ -30,7 +30,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3 text-center" >
-                                    <span class="skills" style="color: white;text-align:center;">Enter a valid github project url</span>
+                                    <span class="skills" style="color: white;text-align:center;">Enter a valid github project url<br>(Press Enter to GO!)</span>
                                     <input class="form-control" type="text" ng-model="url" ng-keyup="enter($event)">
 
                                 </div>
@@ -70,39 +70,44 @@
                             <h3 style="color:black; text-align: center;" ng-show="table"> Issues</h3>
                             <uib-accordion close-others="false">
                                 <uib-accordion-group heading="[[issue.issue.title]]" ng-repeat="issue in issues">
-                                [[issue.issue.body]]
-
-                                <br>
-                                <h3 style="color:black; text-align: center;" ng-show="table">Comments</h3>
-                                <uib-accordion close-others="false">
-                                    <uib-accordion-group heading="[[comment.user.login]]" ng-repeat="comment in issue.commentsArray" style="margin-left: 50px;">
-                                        [[comment.body]]
-                                </uib-accordion>
-
-                                <form name="sentMessage" id="contactForm" novalidate style="margin-left: 50px;">
-                                    <div class="row control-group">
-                                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                                            <label>Username</label>
-                                            <input type="text" class="form-control" placeholder="Username" id="username" required data-validation-required-message="You cannot comment without entering your username" ng-model="meraform.username">
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="row control-group">
-                                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                                            <label>Comment</label>
-                                            <textarea rows="5" class="form-control" placeholder="Care to Comment?" id="comment" required data-validation-required-message="Your comment can't be empty"  ng-model="meraform.personalcomment"></textarea>
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
+                                    [[issue.issue.body]]
                                     <br>
-                                    <div id="success"></div>
-                                    <div class="row">
-                                        <div class="form-group col-xs-12">
-                                            <button type="submit" class="btn btn-success btn-lg" ng-click="postcomment(issue)">Comment</button>
+                                    <h3 style="color:black; text-align: center;" ng-show="table">Comments</h3>
+                                    <uib-accordion close-others="false">
+                                        <uib-accordion-group heading="[[comment.user.login]]" ng-repeat="comment in issue.commentsArray" style="margin-left: 50px;">
+                                            [[comment.body]]
+                                    </uib-accordion>
+
+                                    <form name="sentMessage" id="contactForm" novalidate style="margin-left: 50px;">
+                                        <div class="row control-group">
+                                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control" placeholder="Username" id="username"  ng-model="meraform.username" name="uname" required="" ng-required="true"/>
+                                                <div ng-show="sentMessage.$submitted || sentMessage.uname.$touched">
+                                                    <div ng-show="sentMessage.uname.$error.required">Tell us your name.</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+
+                                        <div class="row control-group">
+                                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                                <label>Comment</label>
+                                                <textarea rows="5" class="form-control" placeholder="Care to Comment?" id="comment" ng-model="meraform.personalcomment" name="comcom" required="" ng-required="true"/>     </textarea>
+                                                <div ng-show="sentMessage.$submitted || sentMessage.comcom.$touched">
+                                                    <div ng-show="sentMessage.comcom.$error.required">
+                                                        Tell us your comment.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div id="success"></div>
+                                        <div class="row">
+                                            <div class="form-group col-xs-12">
+                                                <button class="btn btn-success btn-lg" type="button" ng-click="sentMessage.$valid && postcomment(issue)">Comment</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </uib-accordion-group>
                             </uib-accordion>
 
