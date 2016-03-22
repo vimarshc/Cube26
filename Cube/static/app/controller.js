@@ -20,6 +20,29 @@ the comment objects. Each comment object contains a user object which contains a
     .controller("homeController", function($scope, $http, gitFactory, postcomment, DOMAIN){
 
 
+        $scope.groups = [
+    {
+      title: "Dynamic Group Header - 1",
+      content: "Dynamic Group Body - 1",
+      Arr:[1,2,3,4,5,6,7],
+      img:"https://avatars.githubusercontent.com/u/14919965?v=3"
+    },
+    {
+      title: "Dynamic Group Header - 2",
+      content: "Dynamic Group Body - 2",
+      Arr:[1,2,3,4,5,6,7],
+      img:"https://avatars.githubusercontent.com/u/14919965?v=3"
+    },
+    {
+      title: "Dynamic Group Header - 3",
+      content: "Dynamic Group Body - 3",
+      Arr:[1,2,3,4,5,6,7],
+      img:"https://avatars.githubusercontent.com/u/14919965?v=3"
+      
+    }
+  ];
+
+
         var diver = 86400000;
         //Difference between dates is converted to number of days by dividing by this number. 
 
