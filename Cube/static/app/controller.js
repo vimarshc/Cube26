@@ -17,7 +17,7 @@ the comment objects. Each comment object contains a user object which contains a
     angular.module('gitbub.controllers', [])
 
     // home controller
-    .controller("homeController", function($scope, $http, gitFactory, DOMAIN){
+    .controller("homeController", function($scope, $http, gitFactory, postcomment, DOMAIN){
 
 
         var diver = 86400000;
@@ -151,32 +151,37 @@ the comment objects. Each comment object contains a user object which contains a
             //console.info($scope.meraform.personalcomment);
             var comment = {
                 user:{
-                    login: $scope.meraform.username
+                    login: $scope.meraform.username,
+                    avatar_url:'https://avatars.githubusercontent.com/u/14919965?v=3'
                 },
                 body: $scope.meraform.personalcomment,
                 created_at: new Date(),
             };
-            //console.log(issue);
-            issue.commentsArray.push(comment);
-            //console.log(issue);
+
+
+            postcomment.comment(issue, comment);
+
             $scope.meraform.username = "";
             $scope.meraform.personalcomment = "";
-            console.info('comment', comment);
+
+            //console.log(issue);
+            // issue.commentsArray.push(comment);
+            //console.log(issue);
+
+
+
+            // console.info('comment', comment);
 
             //Backend AJAX call to save comment
-            $http.post(DOMAIN.server, comment)
-            .success(function(data, status, headers, config){
-                if (status===200){
-                    console.log("Saved in DB");
-                }                    
-            })
-            .error(function(data, status, headers, config){
-                console.log("Error in Saving");
-            });
-
-            $scope.sentMessage.setUntouched();
-            $scope.sentMessage.setPristine();
-
+            // $http.post(DOMAIN.server, comment)
+            // .success(function(data, status, headers, config){
+            //     if (status===200){
+            //         console.log("Saved in DB");
+            //     }                    
+            // })
+            // .error(function(data, status, headers, config){
+            //     console.log("Error in Saving");
+            // }); 
         };
     })
 

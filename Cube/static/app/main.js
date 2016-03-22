@@ -8,6 +8,7 @@
 		'ngCookies',
 		'gitbub.controllers',
 		'gitbub.service_git',
+		'gitbub.commentservice',
 		'ui.bootstrap',
 	])
 
