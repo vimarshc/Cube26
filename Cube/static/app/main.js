@@ -51,10 +51,11 @@
 		API: "https://api.github.com/repos/",
 	})
 
-	// All crm api urls go here
-	// DO NOT hard code these urls anywhere in the project
-	// .constant("API_URLS", {	 
-	// 	dbsave: "dbsave/", 
-	// })
+
+	//Difference between dates is converted to number of days by dividing by this number. 
+	.constant("UTIL",{
+		diver:86400000,
+	})
+
 
 ;})();

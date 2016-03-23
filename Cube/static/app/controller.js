@@ -17,33 +17,9 @@ the comment objects. Each comment object contains a user object which contains a
     angular.module('gitbub.controllers', [])
 
     // home controller
-    .controller("homeController", function($scope, $http, gitFactory, postcomment, DOMAIN){
+    .controller("homeController", function($scope, $http, gitFactory, postcomment, DOMAIN, UTIL){
 
-
-        $scope.groups = [
-    {
-      title: "Dynamic Group Header - 1",
-      content: "Dynamic Group Body - 1",
-      Arr:[1,2,3,4,5,6,7],
-      img:"https://avatars.githubusercontent.com/u/14919965?v=3"
-    },
-    {
-      title: "Dynamic Group Header - 2",
-      content: "Dynamic Group Body - 2",
-      Arr:[1,2,3,4,5,6,7],
-      img:"https://avatars.githubusercontent.com/u/14919965?v=3"
-    },
-    {
-      title: "Dynamic Group Header - 3",
-      content: "Dynamic Group Body - 3",
-      Arr:[1,2,3,4,5,6,7],
-      img:"https://avatars.githubusercontent.com/u/14919965?v=3"
-      
-    }
-  ];
-
-
-        var diver = 86400000;
+        var UTIL.diver = 86400000;
         //Difference between dates is converted to number of days by dividing by this number. 
 
         $scope.stats = {};
@@ -95,7 +71,7 @@ the comment objects. Each comment object contains a user object which contains a
 
                         temp_str = repodetails[i].created_at;
                         temp = new Date(temp_str);
-                        days = (now - temp)/diver;
+                        days = (now - temp)/UTIL.diver;
                         var item = {};
                         item.issue = repodetails[i];
                         item.commentsArray = [];
