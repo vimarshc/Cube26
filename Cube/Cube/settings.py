@@ -109,7 +109,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static/"), 
     os.path.join(BASE_DIR, "static/vendor/freelancer/"),
-    os.path.join(BASE_DIR, "/templates/"),
+    os.path.join(BASE_DIR, "templates/"),
 
 )
 
