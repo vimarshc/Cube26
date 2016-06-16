@@ -9,6 +9,7 @@
 		'gitbub.controllers',
 		'gitbub.service_git',
 		'ui.bootstrap',
+		'gitbub.directives',
 	])
 
 	// Changing interpolation start/end symbols.
@@ -48,6 +49,10 @@
 
 	.constant("GITHUB", {
 		API: "https://api.github.com/repos/",
+	})
+
+	.constant("CONSTANTS", {
+		diver:86400000,
 	})
 
 	// All crm api urls go here

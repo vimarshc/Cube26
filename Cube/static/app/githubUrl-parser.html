@@ -1,0 +1,45 @@
+<div>
+	<div class="row">
+	    <div class="col-md-6 col-md-offset-3 text-center" >
+	        <span class="skills" style="color: white;text-align:center;">
+	        	Enter a valid github project url<br>Press Enter to GO!
+	        </span>
+	        <input class="form-control" type="text" ng-model="url" ng-keyup="enter($event)">
+
+          [[var]]
+	    </div>
+    </div>
+
+    <div ng-show="table" style="color:black;padding-top: 50px;">
+        <h3 style="color:black; text-align: center;">
+         	Issues Information
+     	</h3>
+        <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th>Criterion</th>
+                <th>Number of Issues</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Total</td>
+                <td>[[stats.Total]]</td>
+              </tr>
+              <tr>
+                <td>Last 24 hours</td>
+                <td>[[stats.Day]]</td>
+              </tr>
+              <tr>
+                <td>More than 24 hours and less than 7 days</td>
+                <td>[[stats.Week]]</td>
+              </tr>
+              <tr>
+                <td>Greater than 7 days</td>
+                <td>[[stats.MorethanWeek]]</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <issues data="issues"></issues>
+</div>
